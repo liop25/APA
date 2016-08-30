@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 int * insertion(int *arr, int size){
 	int i, j, key;
@@ -12,10 +12,14 @@ int * insertion(int *arr, int size){
 	}
 }
 
-int main(){
-  int arr[] = {3,2,5,1,4,6,26,62,634,37,37,2,25,5,2,374,75,22};
-  int size = sizeof(arr)/sizeof(arr[0]);
-  insertion(arr,size);
-  int i;
-  for(i = 0; i<size; i++) printf("%d%s", arr[i],i != size-1 ? ", ":"\n") ;
+int main(int argc, char** argv){
+	int size;
+	scanf("%d", &size);
+	int i;
+	int * arr = (int*) malloc(size*sizeof(int));
+	for(i = 0; i < size; i++) scanf("%d", &arr[i]);
+	insertion(arr,size);
+	for(i = 0; i<size; i++) printf("%d\n", arr[i]);
+	free(arr);
+	return 0;
 }
